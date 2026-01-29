@@ -1,4 +1,4 @@
-from langchain_openai.chat_models import ChatOpenAI
+from langchain_openai.chat_models import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import chain
 
@@ -11,8 +11,10 @@ template = ChatPromptTemplate.from_messages(
     ]
 )
 
-model = ChatOpenAI(model="gpt-3.5-turbo")
-
+model = AzureChatOpenAI(
+    api_version="2024-12-01-preview",
+    model="gpt-5.2-chat" 
+)
 # combine them in a function
 # @chain decorator adds the same Runnable interface for any function you write
 

@@ -1,4 +1,4 @@
-from langchain_openai import ChatOpenAI
+from langchain_openai import AzureChatOpenAI
 from pydantic import BaseModel
 
 
@@ -11,7 +11,11 @@ class AnswerWithJustification(BaseModel):
     """Justification for the answer"""
 
 
-llm = ChatOpenAI(model="gpt-3.5", temperature=0)
+model = AzureChatOpenAI(
+    api_version="2024-12-01-preview",
+    model="gpt-5.2-chat",
+    temperature=0 
+)
 structured_llm = llm.with_structured_output(AnswerWithJustification)
 
 response = structured_llm.invoke(

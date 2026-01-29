@@ -1,6 +1,9 @@
-from langchain_openai.chat_models import ChatOpenAI
+from langchain_openai.chat_models import AzureChatOpenAI
 
-model = ChatOpenAI(model="gpt-3.5-turbo")
+model = AzureChatOpenAI(
+    api_version="2024-12-01-preview",
+    model="gpt-5.2-chat" 
+)
 
 completion = model.invoke("Hi there!")
 # Hi!

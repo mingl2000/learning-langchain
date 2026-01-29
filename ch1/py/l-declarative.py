@@ -1,4 +1,4 @@
-from langchain_openai.chat_models import ChatOpenAI
+from langchain_openai.chat_models import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
 # the building blocks
@@ -10,7 +10,10 @@ template = ChatPromptTemplate.from_messages(
     ]
 )
 
-model = ChatOpenAI()
+model = AzureChatOpenAI(
+    api_version="2024-12-01-preview",
+    model="gpt-5.2-chat" 
+)
 
 # combine them with the | operator
 

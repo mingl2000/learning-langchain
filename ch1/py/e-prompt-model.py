@@ -1,4 +1,4 @@
-from langchain_openai.chat_models import ChatOpenAI
+from langchain_openai.chat_models import AzureChatOpenAI
 from langchain_core.prompts import PromptTemplate
 
 # both `template` and `model` can be reused many times
@@ -11,7 +11,10 @@ Question: {question}
 
 Answer: """)
 
-model = ChatOpenAI(model="gpt-3.5-turbo")
+model = AzureChatOpenAI(
+    api_version="2024-12-01-preview",
+    model="gpt-5.2-chat" 
+)
 
 # `prompt` and `completion` are the results of using template and model once
 
